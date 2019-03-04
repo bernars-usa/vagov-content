@@ -13,11 +13,12 @@ display_title: Veterans Community Care Program Eligibility Tool
 vagovprod: false
 ---
 
-<div class="va-introtext" id="introtext">
+<div class="va-introtext">
 Determine whether you may qualify to receive care from a third-party provider through the Veterans Community Care Program by telling us where you live and the type of health care you're seeking. Contact your primary care physician for any questions about your care.
 </div>
 <div id="loading" style="display:none">
-<img src="https://prod-va-gov-assets.s3-us-gov-west-1.amazonaws.com/img/loading-state.svg" alt="Loading-Gif">
+	Loading...
+	<!-- put VA loading gif here -->
 </div>
 <form id="address_form" name="address_form">
 <label>Street Address:</label><input type="text" name="street" required autocomplete="address-line1" />
@@ -271,7 +272,7 @@ Other
 </select>
 <input type="submit" value="Submit" />
 </form>
-<script src="https://veteligibilitystatus.com/js/jquery-3.3.1.min.js" type="text/javascript"></script>
+<script src="https://staging-va-gov-assets.s3-us-gov-west-1.amazonaws.com/js/jquery-3.3.1.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 $('#address_form').submit(function(e) {
 		e.preventDefault();
@@ -295,11 +296,11 @@ $('#address_form').submit(function(e) {
 					$(this).text('Based on the information you provided, you are eligible for the Veterans Community Care Program.');
 				}
 				else {
-					$(this).text('Based on the information you provided, you may be eligible for the Veterans Community Care Program. Contact your primary care physician for more information.')
+					$(this).text('Based on the information you provided, you may be eligible for the Veterans Community Care Program. Discuss your personal needs with your primary care physician.')
 				}
 			},
 			error: function() {
-				$(this).html("Based on the information you provided, we were unable to determine your eligibility for the Veterans Community Care Program. Contact your primary care physician for more information.");
+				$(this).html("Based on the information you provided, we were unable to determine your eligibility for the Veterans Community Care Program. Discuss your personal needs with your primary care physician.");
 			}
 		});
 	});
@@ -311,8 +312,7 @@ $(document).ready(function () {
 		$("#address_form").hide();
     }).ajaxStop(function () {
         $("#loading").hide();
-	$("#address_form").show();
-	$("#introtext").hide();
+		$("#address_form").show();
     });
 });
 </script>
